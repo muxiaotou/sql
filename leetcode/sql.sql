@@ -13,3 +13,6 @@ select Email  from Person group by Email having count(Email) > 1;
 
 -- 183从不订购的客户
 select Customers.Name as Customers from Customers where Customers.Id not in (select Id from Orders);
+
+-- 196删除重复的电子邮件(先查找出需要保留的，然后再delete not in结果当中的)
+delete from Person where id not in (select min(id) from Person group by email);

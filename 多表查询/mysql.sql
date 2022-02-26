@@ -14,6 +14,7 @@
 
 -- group by ： 按照某个字段，对结果进行分组，可以使用sum、avg、count等对组数据进行计算(where 之后，order by之前)
 --     group by后面可以跟having，进行条件限定，可以通过and 或 or进行多条件限定
+--     select max(id) from Person group by email;，group by后，如果有id，会显示最小id，可以使用max或者min来自定义
 
 -- exists : 子查询时，where后跟exists来表示内层子查询是否有结果返回，有结果true时，外层select才查询，无结果false时外层select不查询
 
