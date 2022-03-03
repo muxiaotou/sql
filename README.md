@@ -53,10 +53,22 @@
     [^] 不匹配[]里的字符
     SELECT device_id,age,university FROM user_profile WHERE university LIKE '%北京%'  查询大学名字带有北京的学生信息
     
-    #最大值max
-    select max(gpa ) from user_profile WHERE university='复旦大学'
-    
-    正在看计算函数
-    
+    #一些函数
+    select max(gpa) from user_profile WHERE university='复旦大学'
+    max 最大值  \ abs 绝对值 \ count(*) 返回表中行数，包括NULL值的列 \count() 返回表中非NULL的行数  \ min  最小值 \sum 总和 \ avg 平均数
+
+    #分组 group by having
+    select university , avg(question_cnt) as avg_question_cnt, avg(answer_cnt) as avg_answer_cnt from user_profile group by university having avg_question_cnt <5 or avg_answer_cnt < 20;
+    其中可以使用as新命名的列作为后面having当中的判断条件
+
+    #分组+排序
+    select university, avg(question_cnt) as avg_question_cnt from user_profile group by university order by avg_question_cnt;
+
+    #连表查询
+    子查询：select question_id, result from question_practice_detail where device_id in (select device_id from user_profile where university = "浙江大学");
+    内连接：select qpd.device_id, qpd.question_id, qpd.result from question_practice_detail as qpd inner join user_profile as up on up.device_id = qpd.device_id and up.university = "浙江大学";
+    inner join ... on ...  where ...
+
+    SQL22
     
     
