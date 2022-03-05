@@ -35,7 +35,7 @@
     #查询条件 where 
     比较运算符：= < <= > >= !=,或者NOT加比较运算符
     确定集合： in  not in
-    范围：between and, not between and
+    范围：between and, not between and 【包含上下界】
     select * from staff where age between 26 and 38;
     select * from staff where age >= 26 and age <= 38;
     select * from staff where age not between 26 and 38;
@@ -64,9 +64,11 @@
     #分组+排序
     select university, avg(question_cnt) as avg_question_cnt from user_profile group by university order by avg_question_cnt;
 
-    #连表查询
+    #连表查询(多张表时，子查询可以嵌套多个子查询)
     子查询：select question_id, result from question_practice_detail where device_id in (select device_id from user_profile where university = "浙江大学");
     内连接：select qpd.device_id, qpd.question_id, qpd.result from question_practice_detail as qpd inner join user_profile as up on up.device_id = qpd.device_id and up.university = "浙江大学";
     inner join ... on ...  where ...
 
-    SQL22
+    SQL35  必知必会
+
+    
