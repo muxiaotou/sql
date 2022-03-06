@@ -1,7 +1,7 @@
     sql
     https://www.runoob.com/mysql/mysql-tutorial.html
     以下语句都是在牛客网上面逐个进行的练习
-    https://www.nowcoder.com/exam/oj?tab=SQL%E7%AF%87&topicId=199
+    https://www.nowcoder.com/exam/oj?tab=SQL%E7%AF%87&topicId=199  【必知必会】
 
     #drop、truncate、delete区别：
     drop table  删除整个表
@@ -61,6 +61,9 @@
     select university , avg(question_cnt) as avg_question_cnt, avg(answer_cnt) as avg_answer_cnt from user_profile group by university having avg_question_cnt <5 or avg_answer_cnt < 20;
     其中可以使用as新命名的列作为后面having当中的判断条件
 
+    select sum(quantity*item_price) from OrderItems group by order_num;
+    group by分组，当order_num有多行时，sum里面会先每行计算quantity*item_price，然后再讲所有行的计算结果相加
+
     #分组+排序
     select university, avg(question_cnt) as avg_question_cnt from user_profile group by university order by avg_question_cnt;
 
@@ -68,7 +71,5 @@
     子查询：select question_id, result from question_practice_detail where device_id in (select device_id from user_profile where university = "浙江大学");
     内连接：select qpd.device_id, qpd.question_id, qpd.result from question_practice_detail as qpd inner join user_profile as up on up.device_id = qpd.device_id and up.university = "浙江大学";
     inner join ... on ...  where ...
-
-    SQL35  必知必会
 
     

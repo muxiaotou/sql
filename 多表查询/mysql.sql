@@ -141,3 +141,11 @@ MariaDB [chenli]> select * from staff where exists (select * from department whe
 +----+-----------+--------+------+--------+
 6 rows in set (0.00 sec)
 
+
+-- 借住笛卡尔积，打印两个表当中关联的记录(两个标通过prod_id关联)
+select prod_name, sum(quantity) as t from Products, OrderItems where Products.prod_id = OrderItems.prod_id group by prod_name order by t;
+select prod_name, sum(quantity) as t from Products join OrderItems on Products.prod_id = OrderItems.prod_id group by prod_name order by t;
+
+-- 连接是有列名相同，可以使用using替代on
+select Vendors.vend_id, count(Products.prod_id) from Vendors left join Products on Vendors.vend_id = Products.vend_id group by Vendors.vend_id;
+select Vendors.vend_id, count(Products.prod_id) from Vendors left join Products using(vend_id) group by Vendors.vend_id;
