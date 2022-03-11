@@ -21,3 +21,7 @@ select * from student; //基础查询
 select name, sex from student;
 
 select distinct sex from student; //去重查询
+select * from student where sex [not] between 60 and 80; //区间查询
+select * from student where sex >= 60 and sex <= 80;
+
+select * from student where sex [not] in (30, 40, 80); //集合查询
